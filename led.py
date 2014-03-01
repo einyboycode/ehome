@@ -4,8 +4,9 @@
 import RPi.GPIO as GPIO
 import time
 import requests
+import json
 
-apiurl = " http://api.yeelink.net/v1.0/device/7909/sensor/12548/datapoints"
+apiurl = "http://api.yeelink.net/v1.0/device/7909/sensor/12548/datapoints"
 header =  {'U-ApiKey':'f790aa8e585cc5ce0cda6015a6563cec'}
 
 GPIO.setmode(GPIO.BOARD)
@@ -14,8 +15,9 @@ GPIO.setup(11, GPIO.OUT)
 
 while True:
     r = requests.get(apiurl, headers=header);
-    print(t.text)
-    led = r.json
+    print(r.text)
+    #led = r.text.json
+    led = json.loads(r.text)
     if led["value"]==1:
     	GPIO.output(11, GPIO.LOW)
     else:
