@@ -50,13 +50,13 @@ def say_hello(type):
     msg = ""
     if type=="normal":
         return msg
-    if type=="morning"
+    if type=="morning":
         return "新一天开始，各位早上好！"
-    if type=="noon"
+    if type=="noon":
         return "人是铁，饭是刚，同志们饭点到了！"
-    if type=="evening"
+    if type=="evening":
         return "同志们要知道南宁是个堵车的地方，不下班更待何时！"
-    if type=="night"
+    if type=="night":
         return "别忘记晾，关好门，大家晚安！"
     return msg
         
@@ -72,13 +72,13 @@ qq.set_access_token("83d36ac2caa900ab53374903183cba06", "5FD49B7E7A810115834085C
 msg = ""
 if sys.argv[1]=="normal":
     msg = '智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
-if sys.argv[1]=="morning"
+if sys.argv[1]=="morning":
     msg = '智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
-if sys.argv[1]=="noon"
+if sys.argv[1]=="noon":
     msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1]))
-if sys.argv[1]=="evening"
+if sys.argv[1]=="evening":
     msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1]))
-if sys.argv[1]=="night"
+if sys.argv[1]=="night":
     msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1]))
     
 qq.upload.t__add_pic(format='json', content=msg, clientip="113.12.163.144", pic=open('/home/pi/img/capture.jpg','rb'));
