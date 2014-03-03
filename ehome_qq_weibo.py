@@ -24,25 +24,24 @@ def get_day_weather():
 
     # print weather info
     msg = []
-    temp = u'城市：%s' % weatherInfo['city']
+    temp = '城市：%s' % weatherInfo['city']
     msg.append(temp)
-    temp = u'时间：%s' % weatherInfo['date_y']
+    temp = '时间：%s' % weatherInfo['date_y']
     msg.append(temp)
-    temp = u'24小时天气：'
+    temp = '24小时天气：'
     msg.append(temp)
-    temp = u'温度：%s' % weatherInfo['temp1']
+    temp = '温度：%s' % weatherInfo['temp1']
     msg.append(temp)
-    temp = u'天气：%s' % weatherInfo['weather1']
+    temp = '天气：%s' % weatherInfo['weather1']
     msg.append(temp)
-    temp = u'风速：%s' % weatherInfo['wind1']
+    temp = '风速：%s' % weatherInfo['wind1']
     msg.append(temp)
 
-    print '紫外线：\t', weatherInfo['index_uv']
-    temp = u'紫外线：%s' % weatherInfo['index_uv']
+    temp = '紫外线：%s' % weatherInfo['index_uv']
     msg.append(temp)
 
     print '穿衣指数：\t', weatherInfo['index_d']
-    temp = u'穿衣指数：%s' % weatherInfo['index_d']
+    temp = '穿衣指数：%s' % weatherInfo['index_d']
     msg.append(temp)
     return '\r\n'.join(msg)
 
@@ -71,15 +70,15 @@ qq.set_access_token("83d36ac2caa900ab53374903183cba06", "5FD49B7E7A810115834085C
 
 msg = ""
 if sys.argv[1]=="normal":
-    msg = u'智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
+    msg = '智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
 if sys.argv[1]=="morning":
-    msg = u'智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
+    msg = '智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
 if sys.argv[1]=="noon":
-    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="evening":
-    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="night":
-    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
     
 qq.upload.t__add_pic(format='json', content=msg, clientip="113.12.163.144", pic=open('/home/pi/img/capture.jpg','rb'));
 
