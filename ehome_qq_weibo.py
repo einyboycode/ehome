@@ -52,13 +52,13 @@ def say_hello(type):
     if type=="normal":
         return msg
     if type=="morning":
-        return "新一天开始，各位早上好！"
+        return "新一天开始，各位早上好!"
     if type=="noon":
-        return "人是铁，饭是刚，同志们饭点到了！"
+        return "人是铁，饭是刚,同志们饭点到了!"
     if type=="evening":
-        return "同志们要知道南宁是个堵车的地方，不下班更待何时！"
+        return "同志们要知道南宁是个堵车的地方,不下班更待何时!"
     if type=="night":
-        return "别忘记晾，关好门，大家晚安！"
+        return "别忘记晾，关好门,大家晚安!"
     return msg
         
         
