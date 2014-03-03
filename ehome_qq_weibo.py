@@ -73,7 +73,7 @@ qq.set_access_token("83d36ac2caa900ab53374903183cba06", "5FD49B7E7A810115834085C
 msg = ""
 if sys.argv[1]=="normal":
     #msg = u'智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
-    msg = u'智能家居机器人提醒:目前您室内温度为 %f ℃' % get_room_temperature())
+    msg = u'智能家居机器人提醒:目前您室内温度为 %f ℃' % get_room_temperature()
 if sys.argv[1]=="morning":
     #msg = u'智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]),get_room_temperature())
     msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
