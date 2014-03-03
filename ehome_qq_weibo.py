@@ -71,15 +71,15 @@ qq.set_access_token("83d36ac2caa900ab53374903183cba06", "5FD49B7E7A810115834085C
 
 msg = ""
 if sys.argv[1]=="normal":
-    msg = '智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
+    msg = u'智能家居机器人提醒:目前您室内温度为 %f ℃ %s' % (get_room_temperature(),get_day_weather())
 if sys.argv[1]=="morning":
-    msg = '智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
+    msg = u'智能家居机器人提醒:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
 if sys.argv[1]=="noon":
-    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="evening":
-    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="night":
-    msg = '智能家居机器人提醒:%s' % say_hello(sys.argv[1])
+    msg = u'智能家居机器人提醒:%s' % say_hello(sys.argv[1])
     
 qq.upload.t__add_pic(format='json', content=msg, clientip="113.12.163.144", pic=open('/home/pi/img/capture.jpg','rb'));
 
