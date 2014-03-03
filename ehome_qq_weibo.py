@@ -1,5 +1,7 @@
-# -*- coding: utf-8 -*-
-#/home/pi/temperature.py
+#! /usr/bin/python
+# -*- coding: cp936 -*-
+# coding = utf-8
+
 import time
 from qqweibo import APIClient
 import urllib2
@@ -7,6 +9,7 @@ import json
 import sys
 
 def get_room_temperature():
+    return 0
     tfile = open("/sys/bus/w1/devices/28-000004f13577/w1_slave")
     text = tfile.read()
     tfile.close()
@@ -24,24 +27,23 @@ def get_day_weather():
 
     # print weather info
     msg = []
-    temp = 'åŸå¸‚ï¼š%s' % weatherInfo['city']
+    temp = u'³ÇÊĞ£º%s' % weatherInfo['city']
     msg.append(temp)
-    temp = 'æ—¶é—´ï¼š%s' % weatherInfo['date_y']
+    temp = u'Ê±¼ä£º%s' % weatherInfo['date_y']
     msg.append(temp)
-    temp = '24å°æ—¶å¤©æ°”ï¼š'
+    temp = u'24Ğ¡Ê±ÌìÆø£º'
     msg.append(temp)
-    temp = 'æ¸©åº¦ï¼š%s' % weatherInfo['temp1']
+    temp = u'ÎÂ¶È£º%s' % weatherInfo['temp1']
     msg.append(temp)
-    temp = 'å¤©æ°”ï¼š%s' % weatherInfo['weather1']
+    temp = u'ÌìÆø£º%s' % weatherInfo['weather1']
     msg.append(temp)
-    temp = 'é£é€Ÿï¼š%s' % weatherInfo['wind1']
-    msg.append(temp)
-
-    temp = 'ç´«å¤–çº¿ï¼š%s' % weatherInfo['index_uv']
+    temp = u'·çËÙ£º%s' % weatherInfo['wind1']
     msg.append(temp)
 
-    print 'ç©¿è¡£æŒ‡æ•°ï¼š\t', weatherInfo['index_d']
-    temp = 'ç©¿è¡£æŒ‡æ•°ï¼š%s' % weatherInfo['index_d']
+    temp = u'×ÏÍâÏß£º%s' % weatherInfo['index_uv']
+    msg.append(temp)
+
+    temp = '´©ÒÂÖ¸Êı£º%s' % weatherInfo['index_d']
     msg.append(temp)
     return '\r\n'.join(msg)
 
@@ -50,13 +52,13 @@ def say_hello(type):
     if type=="normal":
         return msg
     if type=="morning":
-        return "æ–°ä¸€å¤©å¼€å§‹ï¼Œå„ä½æ—©ä¸Šå¥½ï¼"
+        return "ĞÂÒ»Ìì¿ªÊ¼£¬¸÷Î»ÔçÉÏºÃ£¡"
     if type=="noon":
-        return "äººæ˜¯é“ï¼Œé¥­æ˜¯åˆšï¼ŒåŒå¿—ä»¬é¥­ç‚¹åˆ°äº†ï¼"
+        return "ÈËÊÇÌú£¬·¹ÊÇ¸Õ£¬Í¬Ö¾ÃÇ·¹µãµ½ÁË£¡"
     if type=="evening":
-        return "åŒå¿—ä»¬è¦çŸ¥é“å—å®æ˜¯ä¸ªå µè½¦çš„åœ°æ–¹ï¼Œä¸ä¸‹ç­æ›´å¾…ä½•æ—¶ï¼"
+        return "Í¬Ö¾ÃÇÒªÖªµÀÄÏÄşÊÇ¸ö¶Â³µµÄµØ·½£¬²»ÏÂ°à¸ü´ıºÎÊ±£¡"
     if type=="night":
-        return "åˆ«å¿˜è®°æ™¾ï¼Œå…³å¥½é—¨ï¼Œå¤§å®¶æ™šå®‰ï¼"
+        return "±ğÍü¼ÇÁÀ£¬¹ØºÃÃÅ£¬´ó¼ÒÍí°²£¡"
     return msg
         
         
@@ -70,15 +72,17 @@ qq.set_access_token("83d36ac2caa900ab53374903183cba06", "5FD49B7E7A810115834085C
 
 msg = ""
 if sys.argv[1]=="normal":
-    msg = 'æ™ºèƒ½å®¶å±…æœºå™¨äººæé†’:ç›®å‰æ‚¨å®¤å†…æ¸©åº¦ä¸º %f â„ƒ %s' % (get_room_temperature(),get_day_weather())
+    #msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:Ä¿Ç°ÄúÊÒÄÚÎÂ¶ÈÎª %f ¡æ %s' % (get_room_temperature(),get_day_weather())
+    msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="morning":
-    msg = 'æ™ºèƒ½å®¶å±…æœºå™¨äººæé†’:%s %s' % (say_hello(sys.argv[1]), get_day_weather())
+    #msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s %s' % (say_hello(sys.argv[1]),get_room_temperature())
+    msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="noon":
-    msg = 'æ™ºèƒ½å®¶å±…æœºå™¨äººæé†’:%s' % say_hello(sys.argv[1])
+    msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="evening":
-    msg = 'æ™ºèƒ½å®¶å±…æœºå™¨äººæé†’:%s' % say_hello(sys.argv[1])
+    msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s' % say_hello(sys.argv[1])
 if sys.argv[1]=="night":
-    msg = 'æ™ºèƒ½å®¶å±…æœºå™¨äººæé†’:%s' % say_hello(sys.argv[1])
+    msg = u'ÖÇÄÜ¼Ò¾Ó»úÆ÷ÈËÌáĞÑ:%s' % say_hello(sys.argv[1])
     
 qq.upload.t__add_pic(format='json', content=msg, clientip="113.12.163.144", pic=open('/home/pi/img/capture.jpg','rb'));
 
